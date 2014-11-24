@@ -14,7 +14,7 @@ Param (
 	[string] $Message
 	,
 	[Parameter(Mandatory = $false, Position = 1)]
-	[string] $QueueName = $biz_dfch_PS_RabbitMQ_Utilities.MQ.QueueName
+	[string] $QueueName = (Get-Variable -Name $MyInvocation.MyCommand.Module.PrivateData.MODULEVAR -ValueOnly).MQ.QueueName
 ) # Param
 
 BEGIN {
@@ -32,7 +32,7 @@ PROCESS {
 $OutputParameter = $null;
 
 try {
-	$OutputParameter = $biz_dfch_PS_RabbitMQ_Utilities.MQ.Send($QueueName, $Message);
+	$OutputParameter = (Get-Variable -Name $MyInvocation.MyCommand.Module.PrivateData.MODULEVAR -ValueOnly).MQ.Send($QueueName, $Message);
 	$fReturn = $true;
 } # try
 catch {
@@ -91,8 +91,8 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function New-Message; }
 # SIG # Begin signature block
 # MIILewYJKoZIhvcNAQcCoIILbDCCC2gCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUP93wGcQtf0KCV0HxRR1Xya73
-# 4s6gggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUFOVFcD9zwooi5Nxr7g9oh8y7
+# ySWgggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
 # VzELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNV
 # BAsTB1Jvb3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xMTA0
 # MTMxMDAwMDBaFw0xOTA0MTMxMDAwMDBaMFExCzAJBgNVBAYTAkJFMRkwFwYDVQQK
@@ -144,11 +144,11 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function New-Message; }
 # Q29kZVNpZ25pbmcgQ0EgLSBHMgISESFgd9/aXcgt4FtCBtsrp6UyMAkGBSsOAwIa
 # BQCgeDAYBgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgor
 # BgEEAYI3AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3
-# DQEJBDEWBBTg8QU6XF1FAOlsHDmbyeONeIgYLDANBgkqhkiG9w0BAQEFAASCAQBu
-# J7auguojfn2XvUkaBIGBu4HVtXtUfJsoYRMI6KnjLectPMUtHg5UfcF2sD8Xkip2
-# sjjqp7+q8nxy+RKeCh24IafkeWFssLWUQHrvlMg0u16vWLPtdATjeqme+MupZeCV
-# kq4bM3DmZ829wo2WJrafFzNK14xN1lkq52CLtDeYSg3o4ElLewvgXDpIwMqlg10J
-# FhgFH2L0ZemFHeYeiiWyfJ+I1wHFvJuK+xpz1/v3JXi8c2lI7sA4Z/JPsuvZjFKn
-# 9bgnYxSay/aDgVAU2EuhxvAqM2qARfSnRgHBywUM5ph27+uc/5OP58L+EdZ3uDw5
-# WfGCiFZjJ35ll52C0BIN
+# DQEJBDEWBBR35ol7f0udZokcm19uVbyUyUDHCDANBgkqhkiG9w0BAQEFAASCAQBs
+# xrNUoIsZLEQ1LZjAYfP79Y5DvEIClly1E3vvRjCaYhHZbi+K45PGyQ/zgPkd4ro8
+# p24HFcs9NFfo6dginqPvCb9LPBqMEZSqqSxchdzTf/Aa7pn0ViVh1F3QL+mWdTnY
+# YSbR5YEG7R1O8J1vIJPnvAstYon9/3EFUsiV4kNUfqH01jXdfrNBDuXquN+jfDqM
+# d6ID3qjpG677dB6fWzFu8HzdSZPMQHTSimKBAIEP+4t7g7yAnnc9C9VZoJD3ECcU
+# jIIuwoKKe6g+0zonEKr0pWHuW2oP/7LrrIQ5qo3opEJbnY+xCHn4FbKr2LlX0p6+
+# 2LZscOG6WRAHkG8PiXGE
 # SIG # End signature block

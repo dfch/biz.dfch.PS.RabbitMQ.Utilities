@@ -1,18 +1,18 @@
-function New-Message {
+function Get-Message {
 
 [CmdletBinding(
     SupportsShouldProcess = $false
 	,
     ConfirmImpact = "Low"
 	,
-	HelpURI='http://dfch.biz/PS/RabbitMQ/Utilities/New-Message/'
+	HelpURI='http://dfch.biz/PS/RabbitMQ/Utilities/Get-Message/'
 )]
 Param (
 	[Parameter(Mandatory = $false, Position = 0)]
-	[string] $QueueName = $biz_dfch_PS_RabbitMQ_Utilities.MQ.QueueName
+	[string] $QueueName = (Get-Variable -Name $MyInvocation.MyCommand.Module.PrivateData.MODULEVAR -ValueOnly).MQ.QueueName
 	,
 	[Parameter(Mandatory = $false, Position = 1)]
-	[int] $WaitMilliSeconds = $biz_dfch_PS_RabbitMQ_Utilities.MQ.WaitMilliSeconds
+	[int] $WaitMilliSeconds = (Get-Variable -Name $MyInvocation.MyCommand.Module.PrivateData.MODULEVAR -ValueOnly).MQ.WaitMilliSeconds
 	,
 	[ValidateSet('default', 'json', 'json-pretty', 'xml', 'xml-pretty', 'json-decoded')]
 	[Parameter(Mandatory = $false)]
@@ -36,7 +36,7 @@ $OutputParameter = $null;
 
 try {
 
-	$r = $biz_dfch_PS_RabbitMQ_Utilities.MQ.Receive($QueueName, $WaitMilliSeconds)
+	$r = (Get-Variable -Name $MyInvocation.MyCommand.Module.PrivateData.MODULEVAR -ValueOnly).MQ.Receive($QueueName, $WaitMilliSeconds)
 	switch($As) {
 	'xml' { $OutputParameter = (ConvertTo-Xml -InputObject $r).OuterXml; }
 	'xml-pretty' { $OutputParameter = Format-Xml -String (ConvertTo-Xml -InputObject $r).OuterXml; }
@@ -93,8 +93,8 @@ return $OutputParameter;
 
 } # END
 
-} # New-Message
-if($MyInvocation.ScriptName) { Export-ModuleMember -Function New-Message; } 
+} # Get-Message
+if($MyInvocation.ScriptName) { Export-ModuleMember -Function Get-Message; } 
 
 <#
 2014-11-24; rrink; CHG: Cmdlet is now in separate file
@@ -104,8 +104,8 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function New-Message; }
 # SIG # Begin signature block
 # MIILewYJKoZIhvcNAQcCoIILbDCCC2gCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUwu0bZfcjO9foOukh+IsNftn+
-# 5HegggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQU6XJXBdQU0AXxcq38ziRIr/FN
+# hjagggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
 # VzELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNV
 # BAsTB1Jvb3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xMTA0
 # MTMxMDAwMDBaFw0xOTA0MTMxMDAwMDBaMFExCzAJBgNVBAYTAkJFMRkwFwYDVQQK
@@ -157,11 +157,11 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function New-Message; }
 # Q29kZVNpZ25pbmcgQ0EgLSBHMgISESFgd9/aXcgt4FtCBtsrp6UyMAkGBSsOAwIa
 # BQCgeDAYBgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgor
 # BgEEAYI3AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3
-# DQEJBDEWBBR0XWPKkNQIvd8y0Ow/NV2pxlEDvTANBgkqhkiG9w0BAQEFAASCAQBX
-# lkZ0Ogh09SIZRqdOoieE/POsKGb4qbzC0khyEa3xHfLCACFV/B1UOBQ9XR3c0kGQ
-# CtIUK/UXFFW1CTkeOKVF/+xmM7xURhgalIJ8gGfzgmu+LtNEFWlYuWSHpF2Ytb6z
-# HrURg172mEqtL8C3xX3Y6fNLvczP3wzyMIRFFFR+sTNNnIwSU4mPExKPUvyuxLxC
-# E5MwzGPcNHAPN/G8q2geehQ63AeTde8NWOh864ygKNSmYRryppLQKl8TJXAFz3qm
-# 1w/vZTzML+OzEWSc6OSvJzXikekKNhWTBepCImyy4OkQjtNXK8qXgnl2tHTbfaz+
-# kbBxGJUhcJGhwo18HuZp
+# DQEJBDEWBBSdGa2U9l0Mbw34CJpIBmaokilnizANBgkqhkiG9w0BAQEFAASCAQBJ
+# XP74rybCge5rln5nQlj/OCfVoASGD9S5EfWwjk0L1JeZiFFD78Qxw4dR+lyU3CY1
+# Ex/1eo1s0IJ11SVYNkE0ZPYSQ5NyoIRDaIwq4+wHyB+6gu+RSwsezJV/IU7s8ovb
+# BgwY5N9KZtdR6DMVgWc/NbUOOaxrFMWdzC7mC9gdrdHaU/lbCQZDLPqOMCNUFUe7
+# vZMOTdUdXB2WhiyfdEgAW6ksVN3dnc+4i4xm7xu4CoJl8H1470SeefJ3bH2VQ0GX
+# i/kHHG1RpsAK9dBqRXXky4vOgoPjA5MR2nYq3MliDmSSQJnNzZFczGzRlSzJNzlB
+# qviIOYbXTRfr+uIs1t+B
 # SIG # End signature block
