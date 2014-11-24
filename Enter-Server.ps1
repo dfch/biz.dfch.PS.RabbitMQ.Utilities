@@ -1,6 +1,6 @@
-function Enter-RabbitMQ {
+function Enter-Server {
 [CmdletBinding(
-	HelpURI='http://dfch.biz/PS/RabbitMQ/Utilities/Enter-RabbitMQ/'
+	HelpURI='http://dfch.biz/PS/RabbitMQ/Utilities/Enter-Server/'
 )]
 [OutputType([hashtable])]
 Param (
@@ -99,8 +99,8 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Enter-Server -Alias
 # SIG # Begin signature block
 # MIILewYJKoZIhvcNAQcCoIILbDCCC2gCAQExCzAJBgUrDgMCGgUAMGkGCisGAQQB
 # gjcCAQSgWzBZMDQGCisGAQQBgjcCAR4wJgIDAQAABBAfzDtgWUsITrck0sYpfvNR
-# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUxwZmUE2HsCDxK1kmd4DBOs5N
-# ax2gggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
+# AgEAAgEAAgEAAgEAAgEAMCEwCQYFKw4DAhoFAAQUgNTT6YyRAZsxoGSkXSCOMdWL
+# 7ESgggjdMIIEKDCCAxCgAwIBAgILBAAAAAABL07hNVwwDQYJKoZIhvcNAQEFBQAw
 # VzELMAkGA1UEBhMCQkUxGTAXBgNVBAoTEEdsb2JhbFNpZ24gbnYtc2ExEDAOBgNV
 # BAsTB1Jvb3QgQ0ExGzAZBgNVBAMTEkdsb2JhbFNpZ24gUm9vdCBDQTAeFw0xMTA0
 # MTMxMDAwMDBaFw0xOTA0MTMxMDAwMDBaMFExCzAJBgNVBAYTAkJFMRkwFwYDVQQK
@@ -152,11 +152,11 @@ if($MyInvocation.ScriptName) { Export-ModuleMember -Function Enter-Server -Alias
 # Q29kZVNpZ25pbmcgQ0EgLSBHMgISESFgd9/aXcgt4FtCBtsrp6UyMAkGBSsOAwIa
 # BQCgeDAYBgorBgEEAYI3AgEMMQowCKACgAChAoAAMBkGCSqGSIb3DQEJAzEMBgor
 # BgEEAYI3AgEEMBwGCisGAQQBgjcCAQsxDjAMBgorBgEEAYI3AgEVMCMGCSqGSIb3
-# DQEJBDEWBBSa3i/QHOgukR3OJZKyPfMtnvC8HjANBgkqhkiG9w0BAQEFAASCAQCh
-# qgtPVAvmFQjcuACHnyFY67/6ebnYOE2Q8ox3KSbGKMoD57rrh3zPdmZDUetCd/ZL
-# Sc9qqMLzHUahNAOGpV7wCs2cNeKNxjFXI4jyOm3KKXOtSjE4bF9yAEiaaoL/lFtr
-# bIb9zLRX6Kwthmo/m4Pcu7Wa+cq1WIMV/qpt0L0BOg1wQyHlkbmsSzULFDKpPlLp
-# v9y45iP+XUFtPXlI4Rol0C+HHWEi2eLB34QhYwUT4gKDUPs4jzWRI8yNvfSm85Bs
-# jecAucWHYQFH2qiXoIrD88cuJTnEydTY3ct/ZohKxi0/dKmGS6f4ZD0/uY4GFglr
-# 3uDRFiaDGpVdrO+2rcKy
+# DQEJBDEWBBT7fzqDKaJ0OLRCoHq7HbqWwoNGljANBgkqhkiG9w0BAQEFAASCAQBX
+# ic9GZY6sE+ccQptv/X1CPSuLFfw0kYfzpsCk3Jn1URueFIOtSUn80T0d7sqGbctU
+# Lb00noh8NYp0DboTK3+iV3zVFu/0F+D+MvYfQbM6OpmBrLwlyGwdt4UkB+Aaqb3L
+# oyx4oitzUWU+Fmy+5mt3gNV5b+tO8LzPh1ZH970vz6mOXVcjNA7aivFhh829hWtj
+# cYxxeaZXf7hBTQNErZg/BcSgJIQvNVjmwJLv3ieBaYY6pkgmcxha2g69c3HQ7k/6
+# C3g09IPkBs/6yOtmS6KGzdMiM495aHwKtjfeVEXcivJjRXUB0GeJudDcoHdgSklY
+# nI4KqjUEqEZ5/oV9FeP4
 # SIG # End signature block
