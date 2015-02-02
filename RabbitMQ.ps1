@@ -26,17 +26,38 @@ PARAM
     #Defines the server
 	[Parameter(Mandatory = $false, Position = 0)]
 	[string] $Server = $Client.Server
+    ,
+    #Defines username
+	[Parameter(Mandatory = $false, Position = 1)]
+	[string] $Username = "guest"
+    ,
+    #Defines password
+	[Parameter(Mandatory = $false, Position = 2)]
+	[string] $Password = "guest"
+    ,
+    #Defines virtual host
+	[Parameter(Mandatory = $false, Position = 3)]
+	[string] $VirtualHost = "/"
 )
 BEGIN {
 	$datBegin = [datetime]::Now;
 	[string] $fn = $MyInvocation.MyCommand.Name;
-	Log-Debug $fn ("CALL. Server '{0}'." -f $Server) -fac 1;
+	Log-Debug $fn ("CALL. Server '{0}'; Username: '{1}'; VirtualHost: '{2}'." -f $Server,$Username,$VirtualHost) -fac 1;
 }
 PROCESS {
 
 [boolean] $fReturn = $false;
 try {
     $Client.Server = $Server;
+    if($Username){
+        $Client.Username = $Username;
+    }
+    if($Password){
+        $Client.Password = $Password;
+    }
+    if($VirtualHost){
+        $Client.VirtualHost = $VirtualHost;
+    }
     $OutputParameter = $Client.Connect()
     $fReturn = $true;
 }
