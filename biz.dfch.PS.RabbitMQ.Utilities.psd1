@@ -27,7 +27,7 @@ CompanyName = 'd-fens GmbH'
 Copyright = '(c) 2014 d-fens GmbH. Distributed under Apache 2.0 license.'
 
 # Description of the functionality provided by this module
-# Description = 'This Microsoft PowerShell module contains Cmdlets to work with RabbitMQ queues, send and receive messages.'
+Description = 'This Microsoft PowerShell module contains Cmdlets to work with RabbitMQ queues, send and receive messages.'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
